@@ -29,8 +29,10 @@ Sitio web realizado en React para la pizzería "PIZZERIA DEL PINCHA". Incluye me
 1. **Clona el repositorio o copia la carpeta del proyecto:**
    
   ```bash
-  git clone https://github.com/ochodesign/lapasion-reactv3.git
-  cd lapasion-reactv3
+  git clone https://github.com/ochodesign/pincha-pizza.git
+  cd pincha-pizza
+#
+Repositorio oficial: [https://github.com/ochodesign/pincha-pizza](https://github.com/ochodesign/pincha-pizza)
   ```
   O simplemente copia la carpeta a tu PC.
 
