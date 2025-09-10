@@ -1,6 +1,9 @@
 
 import React, { useState } from "react";
+// import { motion } from "framer-motion";
 import { FaShoppingCart, FaPizzaSlice } from "react-icons/fa";
+// Color institucional para h2
+const COLOR_H2 = "#A25305";
 
 const productos = [
   // Pizzas
@@ -44,18 +47,25 @@ const TodosProductosPizzeria = ({ onAddToCart }) => {
   }, [categoria]);
 
   return (
-    <section className="flex flex-col items-center px-4 mt-12">
-  <div className="bg-white rounded-3xl shadow-2xl w-full max-w-6xl py-12 px-4 flex flex-col items-center">
-        <h2 className="text-4xl font-chewy text-orange-600 mb-8 drop-shadow flex items-center gap-2"><FaPizzaSlice className="text-orange-500 w-8 h-8" />Todos los productos</h2>
-  <div className="w-full flex flex-col sm:flex-row gap-3 mb-8 justify-center py-1 px-1 relative items-center">
+    <section
+      className="flex flex-col items-center px-1 sm:px-4 mt-6 sm:mt-12"
+    >
+      <div className="w-full max-w-6xl py-4 sm:py-12 px-0 sm:px-4 flex flex-col items-center bg-transparent sm:bg-white rounded-none sm:rounded-3xl shadow-none sm:shadow-2xl">
+        <h2
+          className="text-5xl sm:text-6xl font-chewy mb-10 drop-shadow font-extrabold text-center leading-tight"
+          style={{ color: COLOR_H2 }}
+        >
+          Todos los productos
+        </h2>
+        <div className="w-full flex flex-col sm:flex-row gap-3 mb-8 justify-center py-1 px-1 relative items-center">
           {categorias.map(cat => (
             <button
               key={cat}
               onClick={() => { setCategoria(cat); setVerMas(6); }}
               className={`px-6 py-2 rounded-full font-extrabold text-base sm:text-lg font-montserrat border-2 transition-all duration-200 whitespace-nowrap shadow ${
                 categoria === cat
-                  ? 'bg-orange-500 text-white border-orange-500 shadow-lg'
-                  : 'bg-white text-black border-black hover:bg-orange-50'
+                  ? 'bg-[#366D58] text-white border-[#366D58] shadow-lg'
+                  : 'bg-white text-black border-[#366D58] hover:bg-[#eaf4f1]'
               }`}
               style={{ minWidth: 110 }}
             >
@@ -72,9 +82,9 @@ const TodosProductosPizzeria = ({ onAddToCart }) => {
             return (
               <div
                 key={idx}
-                className="bg-orange-50 rounded-2xl shadow-lg border-2 border-orange-100 flex flex-col items-center p-6 transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl group"
+                className="bg-[#eaf4f1] rounded-2xl shadow-lg border-2 border-[#d2e6df] flex flex-col items-center p-6 transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl group"
               >
-                <div className="w-full h-56 flex items-center justify-center mb-3 overflow-hidden rounded-xl border-2 border-orange-300 bg-white">
+                <div className="w-full h-56 flex items-center justify-center mb-3 overflow-hidden rounded-xl border-2 border-[#366D58] bg-white">
                   <img
                     src={prod.img}
                     alt={prod.nombre}
@@ -85,11 +95,11 @@ const TodosProductosPizzeria = ({ onAddToCart }) => {
                 <h3 className="text-2xl font-bold text-black mb-1 text-center font-chewy">{prod.nombre}</h3>
                 <p className="text-gray-700 mb-2 text-center min-h-[48px] font-montserrat">{prod.descripcion}</p>
                 <div className="flex items-center justify-between w-full mt-2 mb-2">
-                  <span className="text-lg font-bold text-orange-700 font-montserrat">${prod.precio}</span>
+                  <span className="text-lg font-bold text-[#366D58] font-montserrat">${prod.precio}</span>
                   {onAddToCart && (
                     <button
                       onClick={() => onAddToCart({ ...prod, cantidad })}
-                      className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-1 rounded-full font-bold transition shadow font-montserrat"
+                      className="flex items-center gap-2 bg-[#366D58] hover:bg-green-700 text-white px-4 py-1 rounded-full font-bold transition shadow font-montserrat"
                     >
                       <FaShoppingCart className="w-5 h-5" />
                       Agregar
@@ -98,15 +108,15 @@ const TodosProductosPizzeria = ({ onAddToCart }) => {
                 </div>
                 <div className="flex items-center gap-2 mt-2">
                   <button
-                    className="w-8 h-8 rounded-full bg-orange-200 text-orange-700 font-bold text-xl flex items-center justify-center hover:bg-orange-300 transition"
+                    className="w-8 h-8 rounded-full bg-[#d2e6df] text-[#366D58] font-bold text-xl flex items-center justify-center hover:bg-[#366D58] hover:text-white transition"
                     onClick={() => setCantidades(q => ({ ...q, [idx]: Math.max(1, (q[idx] || 1) - 1) }))}
                     aria-label="Restar"
                   >
                     -
                   </button>
-                  <span className="w-8 text-center font-bold text-lg text-orange-700 select-none">{cantidad}</span>
+                  <span className="w-8 text-center font-bold text-lg text-[#366D58] select-none">{cantidad}</span>
                   <button
-                    className="w-8 h-8 rounded-full bg-orange-200 text-orange-700 font-bold text-xl flex items-center justify-center hover:bg-orange-300 transition"
+                    className="w-8 h-8 rounded-full bg-[#d2e6df] text-[#366D58] font-bold text-xl flex items-center justify-center hover:bg-[#366D58] hover:text-white transition"
                     onClick={() => setCantidades(q => ({ ...q, [idx]: (q[idx] || 1) + 1 }))}
                     aria-label="Sumar"
                   >
@@ -126,7 +136,7 @@ const TodosProductosPizzeria = ({ onAddToCart }) => {
           </button>
         )}
       </div>
-    </section>
+  </section>
   );
 };
 
