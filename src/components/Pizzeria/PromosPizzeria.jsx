@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+
 // Color institucional para h2
 const COLOR_H2 = "#A25305";
 
@@ -55,7 +55,7 @@ const PromosPizzeria = ({ onAddToCart }) => {
   };
 
   return (
-    <motion.section
+    <section
       className="py-12 px-4 flex flex-col items-center"
       style={{
         backgroundImage: 'url(/img/promociones/bg-promo.webp)',
@@ -63,33 +63,23 @@ const PromosPizzeria = ({ onAddToCart }) => {
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
       }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.7, ease: 'easeOut' }}
     >
-      <motion.h2
+      <h2
         className="text-5xl sm:text-6xl font-chewy mb-10 drop-shadow font-extrabold text-center leading-tight sticky top-24 z-30 bg-opacity-80 bg-white rounded-xl px-6 py-2 shadow-lg"
         style={{ color: COLOR_H2 }}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.7 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         Promociones
-      </motion.h2>
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
         {promos.map((promo, idx) => (
-          <motion.div
+          <div
             key={idx}
             className="relative bg-white rounded-3xl border-2 border-[#366D58] shadow-xl p-8 flex flex-col items-center transition-transform duration-300 hover:scale-105 group overflow-hidden"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, ease: 'easeOut', delay: idx * 0.13 }}
           >
             <span className="absolute top-0 left-0 bg-[#366D58] text-white text-xs font-extrabold px-5 py-1.5 rounded-br-2xl z-20 shadow animate-bounce">¡Oferta!</span>
-            <h3 className="text-2xl font-chewy text-black mb-2 text-center drop-shadow-lg">{promo.nombre}</h3>
+            <h3 className="text-3xl font-chewy text-green-700 mb-3 text-center drop-shadow-2xl font-extrabold bg-white/80 px-4 py-2 rounded-xl border-b-4 border-green-400 shadow-lg">
+              {promo.nombre}
+            </h3>
             <p className="text-lg text-[#222] font-montserrat mb-4 text-center">{promo.descripcion}</p>
             <div className="flex items-center justify-center mb-4">
               <span className="text-3xl font-extrabold text-[#366D58] bg-white border-2 border-[#366D58] px-6 py-2 rounded-full shadow">${promo.precio}</span>
@@ -121,10 +111,10 @@ const PromosPizzeria = ({ onAddToCart }) => {
                 Agregar al carrito
               </button>
             )}
-          </motion.div>
+          </div>
         ))}
       </div>
-  </motion.section>
+  </section>
   );
 };
 

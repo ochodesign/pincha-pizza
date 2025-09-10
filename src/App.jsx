@@ -10,6 +10,7 @@ import PromosPizzeria from "./components/Pizzeria/PromosPizzeria";
 import MenuPizzeria from "./components/Pizzeria/MenuPizzeria";
 import CartPizzeria from "./components/Pizzeria/CartPizzeria";
 import CartIconPizzeria from "./components/Pizzeria/CartIconPizzeria";
+import HeaderPizzeria from "./components/Pizzeria/HeaderPizzeria";
 import UbicacionPizzeria from "./components/Pizzeria/UbicacionPizzeria";
 import HorariosPizzeria from "./components/Pizzeria/HorariosPizzeria";
 import '../styles/tailwind.css';
@@ -84,54 +85,11 @@ function PizzeriaApp() {
   };
 
   return (
-  <div className="min-h-screen bg-yellow-50 pt-24">
-  <nav className="bg-black text-white py-1 md:py-2 px-4 flex flex-col md:flex-row md:items-center md:justify-between fixed top-0 left-0 w-full z-50 shadow-lg min-h-[60px] md:min-h-[80px]">
-        {/* Contenedor logo+burger: ocultar en mobile al hacer scroll hacia abajo */}
-        {/* Desktop: logo | nav | carrito */}
-        <div className="hidden md:flex flex-row items-center justify-between w-full">
-          {/* Logo a la izquierda */}
-          <div className="flex-shrink-0 mr-8">
-            <img
-              src="/img/logo/logo-pincha-pizza.webp"
-              alt="Logo Pizzeria del Pincha"
-              className="h-28 w-auto block drop-shadow-lg"
-              style={{ maxWidth: '260px' }}
-            />
-          </div>
-          {/* Menú centrado */}
-          <div className="flex flex-row items-center justify-center space-x-8 text-center flex-1">
-            <a href="/" className="hover:underline text-white text-2xl font-bold">Inicio</a>
-            <a href="#promos-pizzeria" className="hover:underline text-white text-2xl font-bold">Promociones</a>
-            <a href="/productos" className="hover:underline text-white text-2xl font-bold">Productos</a>
-            <a href="#formulario-contacto" className="hover:underline text-white text-2xl font-bold">Contacto</a>
-          </div>
-          {/* Carrito a la derecha */}
-          <div className="flex-shrink-0 ml-8">
-            <CartIconPizzeria cartCount={cart.reduce((acc, i) => acc + i.cantidad, 0)} onClick={() => setShowCart((v) => !v)} />
-          </div>
-        </div>
-        {/* Mobile: logo + burger (con ocultar al scroll) */}
-        <BurgerMenu.Container>
-          <div className="w-full flex flex-row items-center justify-between px-2 pt-1 pb-2 bg-black bg-opacity-90 shadow-lg rounded-b-xl">
-            <img
-              src="/img/logo/logo-pincha-pizza.webp"
-              alt="Logo Pizzeria del Pincha"
-              className="h-12 w-auto block drop-shadow-lg"
-              style={{ maxWidth: '120px' }}
-            />
-            <BurgerMenu>
-              <a href="/" className="hover:underline text-white text-2xl font-bold" onClick={() => window.location.href = '/'}>Inicio</a>
-              <a href="#promos-pizzeria" className="hover:underline text-white text-2xl font-bold">Promociones</a>
-              <a href="/productos" className="hover:underline text-white text-2xl font-bold">Productos</a>
-              <a href="#formulario-contacto" className="hover:underline text-white text-2xl font-bold">Contacto</a>
-            </BurgerMenu>
-          </div>
-        </BurgerMenu.Container>
-        {/* Carrito flotante solo en mobile */}
-        <div className="fixed bottom-5 right-5 z-50 md:hidden">
-          <CartIconPizzeria cartCount={cart.reduce((acc, i) => acc + i.cantidad, 0)} onClick={() => setShowCart((v) => !v)} />
-        </div>
-      </nav>
+  <div className="min-h-screen bg-yellow-50">
+    <HeaderPizzeria
+      cartCount={cart.reduce((acc, i) => acc + i.cantidad, 0)}
+      onCartClick={() => setShowCart((v) => !v)}
+    />
       <Routes>
         <Route path="/" element={
           <>

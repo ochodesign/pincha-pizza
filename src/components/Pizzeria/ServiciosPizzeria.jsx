@@ -30,22 +30,9 @@ const servicios = [
 
 const ServiciosPizzeria = () => (
   <section
-    className="bg-[#eaf4f1] py-12 px-4 flex flex-col items-center"
-    style={{
-      backgroundImage: "url(/img/bg-pincha-cubiertos/bg-section-cancha-caseros.webp)",
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed',
-    }}
+    className="py-12 px-4 flex flex-col items-center"
   >
-    <style>{`
-      @media (min-width: 1024px) {
-        section.bg-\[\#eaf4f1\] {
-          background-size: 10% contain !important;
-        }
-      }
-    `}</style>
+  {/* Fondo removido por pedido */}
     <header className="w-full max-w-3xl">
       <motion.h2
         className="text-5xl sm:text-6xl font-chewy mb-10 drop-shadow font-extrabold text-center leading-tight"

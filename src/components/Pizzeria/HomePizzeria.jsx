@@ -20,7 +20,8 @@ const HomePizzeria = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
-        paddingTop: typeof window !== 'undefined' && window.innerWidth < 640 ? '56px' : '96px',
+        paddingTop: typeof window !== 'undefined' && window.innerWidth < 640 ? '140px' : '160px',
+  paddingBottom: 0,
       }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -30,10 +31,40 @@ const HomePizzeria = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-  <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-white mb-6 font-chewy drop-shadow-lg tracking-wide uppercase shadow-xl" style={{ WebkitTextStroke: '2px black', fontWeight: 900 }}>
-        PIZZERIA DEL PINCHA
-      </h1>
-      <p className="text-xl text-white max-w-xl mb-6 drop-shadow font-montserrat">
+  <h1
+  className="relative text-5xl sm:text-6xl md:text-8xl lg:text-[6.5rem] font-extrabold mb-6 font-chewy tracking-wide uppercase shadow-2xl drop-shadow-2xl animate-hero-pop"
+    style={{
+      background: 'linear-gradient(90deg, #fff 0%, #222 100%)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      WebkitTextStroke: '2.5px #000',
+      textShadow: '0 4px 32px #000a, 0 2px 0 #fff',
+      fontWeight: 900,
+      zIndex: 2,
+      padding: '0.25em 0.5em',
+      borderRadius: '1.5rem',
+      boxShadow: '0 8px 32px #0004',
+      backdropFilter: 'blur(2px)',
+      backgroundColor: 'rgba(0,0,0,0.05)'
+    }}
+  >
+  <span className="px-4 py-2 bg-black bg-opacity-30 rounded-2xl shadow-lg inline-block">
+      PIZZERIA DEL PINCHA
+    </span>
+  </h1>
+      <p
+  className="text-base sm:text-xl text-white max-w-xl mb-6 drop-shadow font-montserrat px-2 sm:px-0"
+        style={{
+          background: 'rgba(0,0,0,0.7)',
+          borderRadius: '1.25rem',
+          border: '2px solid rgba(255,255,255,0.12)',
+          boxShadow: '0 2px 16px #0008',
+          padding: '1rem',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: '100%',
+        }}
+      >
         ¡Bienvenido a la mejor pizza de Caseros!<br />
         Disfrutá nuestras pizzas recién horneadas, ambiente estudiantil y atención rápida. ¡Vení a probarlas!
       </p>
@@ -49,7 +80,7 @@ const HomePizzeria = () => {
           Estadio Ciudad de Caseros
         </span>
       </div>
-      <div className="flex flex-col sm:flex-row gap-4 mt-8">
+  <div className="flex flex-col sm:flex-row gap-4 mt-8 mb-8 sm:mb-0">
         <button
           type="button"
           className={`bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg transition-colors duration-200 ${pulsePromo ? 'animate-ping-short' : ''}`}
@@ -81,6 +112,14 @@ const HomePizzeria = () => {
         }
         .animate-ping-short {
           animation: ping-short 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes hero-pop {
+          0% { transform: scale(0.98) rotate(-1deg); opacity: 0.7; }
+          60% { transform: scale(1.04) rotate(1deg); opacity: 1; }
+          100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        .animate-hero-pop {
+          animation: hero-pop 1.1s cubic-bezier(0.4,0,0.2,1);
         }
       `}</style>
       </motion.div>

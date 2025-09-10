@@ -82,47 +82,63 @@ const TodosProductosPizzeria = ({ onAddToCart }) => {
             return (
               <div
                 key={idx}
-                className="bg-[#eaf4f1] rounded-2xl shadow-lg border-2 border-[#d2e6df] flex flex-col items-center p-6 transition-transform duration-200 hover:-translate-y-2 hover:shadow-2xl group"
+                className="relative bg-white rounded-3xl shadow-xl border-2 border-[#d2e6df] flex flex-col items-center p-8 transition-transform duration-200 hover:-translate-y-2 hover:shadow-green-300 group overflow-hidden"
               >
-                <div className="w-full h-56 flex items-center justify-center mb-3 overflow-hidden rounded-xl border-2 border-[#366D58] bg-white">
+                {/* Número de producto */}
+                <span className="absolute top-4 right-4 bg-green-100 text-[#366D58] text-base font-extrabold px-3 py-1 rounded-full shadow z-10 select-none">
+                  #{idx + 1}
+                </span>
+                {/* Badge de categoría */}
+                <span className="absolute top-4 left-4 bg-[#366D58] text-white text-xs font-extrabold px-4 py-1 rounded-full shadow-md z-10 uppercase tracking-wide opacity-90">
+                  {prod.categoria}
+                </span>
+                {/* Imagen destacada */}
+                <div className="w-full h-44 sm:h-56 flex items-center justify-center mb-4 overflow-hidden rounded-2xl border-2 border-[#366D58] bg-gradient-to-br from-green-50 to-green-100 relative">
                   <img
                     src={prod.img}
                     alt={prod.nombre}
-                    className="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 group-hover:rotate-1 drop-shadow-xl"
                     onError={e => e.target.style.display='none'}
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-black mb-1 text-center font-chewy">{prod.nombre}</h3>
-                <p className="text-gray-700 mb-2 text-center min-h-[48px] font-montserrat">{prod.descripcion}</p>
-                <div className="flex items-center justify-between w-full mt-2 mb-2">
-                  <span className="text-lg font-bold text-[#366D58] font-montserrat">${prod.precio}</span>
-                  {onAddToCart && (
-                    <button
-                      onClick={() => onAddToCart({ ...prod, cantidad })}
-                      className="flex items-center gap-2 bg-[#366D58] hover:bg-green-700 text-white px-4 py-1 rounded-full font-bold transition shadow font-montserrat"
-                    >
-                      <FaShoppingCart className="w-5 h-5" />
-                      Agregar
-                    </button>
-                  )}
+                <h3 className="text-2xl font-bold text-[#222] mb-1 text-center font-chewy drop-shadow-sm group-hover:text-green-700 transition-colors">{prod.nombre}</h3>
+                <p className="text-gray-600 mb-3 text-center min-h-[48px] font-montserrat text-base group-hover:text-black transition-colors">{prod.descripcion}</p>
+                {/* Precio grande */}
+                <div className="flex items-center justify-center mb-4">
+                  <span className="text-3xl font-extrabold text-[#366D58] bg-white border-2 border-[#366D58] px-6 py-2 rounded-full shadow">${prod.precio}</span>
                 </div>
-                <div className="flex items-center gap-2 mt-2">
+                {/* Controles de cantidad */}
+                <div className="flex items-center gap-2 mb-2">
                   <button
-                    className="w-8 h-8 rounded-full bg-[#d2e6df] text-[#366D58] font-bold text-xl flex items-center justify-center hover:bg-[#366D58] hover:text-white transition"
+                    className="w-8 h-8 rounded-full bg-[#eaf4f1] text-[#366D58] text-2xl font-extrabold flex items-center justify-center border border-[#366D58] hover:bg-[#366D58] hover:text-white transition-colors leading-none p-0"
+                    style={{lineHeight: '1', fontSize: '1.5rem'}}
                     onClick={() => setCantidades(q => ({ ...q, [idx]: Math.max(1, (q[idx] || 1) - 1) }))}
                     aria-label="Restar"
+                    type="button"
                   >
-                    -
+                    <span className="flex items-center justify-center w-full h-full">–</span>
                   </button>
-                  <span className="w-8 text-center font-bold text-lg text-[#366D58] select-none">{cantidad}</span>
+                  <span className="text-xl font-bold w-8 text-center select-none">{cantidad}</span>
                   <button
-                    className="w-8 h-8 rounded-full bg-[#d2e6df] text-[#366D58] font-bold text-xl flex items-center justify-center hover:bg-[#366D58] hover:text-white transition"
+                    className="w-8 h-8 rounded-full bg-[#eaf4f1] text-[#366D58] text-2xl font-extrabold flex items-center justify-center border border-[#366D58] hover:bg-[#366D58] hover:text-white transition-colors leading-none p-0"
+                    style={{lineHeight: '1', fontSize: '1.5rem'}}
                     onClick={() => setCantidades(q => ({ ...q, [idx]: (q[idx] || 1) + 1 }))}
                     aria-label="Sumar"
+                    type="button"
                   >
-                    +
+                    <span className="flex items-center justify-center w-full h-full">+</span>
                   </button>
                 </div>
+                {/* Botón agregar al carrito */}
+                {onAddToCart && (
+                  <button
+                    onClick={() => onAddToCart({ ...prod, cantidad })}
+                    className="bg-[#366D58] hover:bg-green-700 text-white font-bold py-2 px-8 rounded-full text-lg shadow-md transition-colors duration-200 tracking-wide mt-2 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                  >
+                    <FaShoppingCart className="w-5 h-5" />
+                    Agregar al carrito
+                  </button>
+                )}
               </div>
             );
           })}
