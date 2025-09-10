@@ -1,4 +1,3 @@
-
 # PIZZERIA DEL PINCHA
 
 Sitio web realizado en React para la pizzería "PIZZERIA DEL PINCHA". Incluye menú de productos, carrito visual con pedido por WhatsApp, promos, ubicación, formulario de contacto y diseño responsive con TailwindCSS.
@@ -55,6 +54,16 @@ Repositorio oficial: [https://github.com/ochodesign/pincha-pizza](https://github
   npm run build
   ```
   Los archivos finales estarán en la carpeta `/build`.
+
+### Dependencias necesarias para desarrollo
+
+Asegúrate de tener instalados estos paquetes para que Babel, React y Webpack funcionen correctamente:
+
+```bash
+npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader webpack webpack-cli webpack-dev-server
+```
+
+Esto instalará todo lo necesario para compilar y ejecutar el proyecto en modo desarrollo y producción.
 
 ## Personalización
 - Cambia el número de WhatsApp en `src/App.jsx` (constante `WHATSAPP_NUMBER`).
